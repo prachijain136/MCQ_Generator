@@ -1,0 +1,404 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>EZ-Quest MCQ's Generater</title>
+<!--
+
+
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/aos.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/owl.carousel.min.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/owl.theme.default.min.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'blog/css/templatemo-digital-trend.css' %}">
+<style>
+
+.slider {
+  -webkit-appearance: none;
+  width: 60%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffc107;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ffc107;
+  cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+
+     <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'mcq-index'%}">
+             
+              <i class="fa fa-cogs fa-2x" ></i>
+            <b>EZ-Quest</b>  
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!--<ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a href="#project" class="nav-link contact">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link contact">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog-detail.html" class="nav-link contact">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link contact">Contact</a>
+                    </li>
+                </ul>-->
+                <div class="navbar-nav ml-auto">
+                    <form method="POST">
+                        {% csrf_token%}
+                    <div class="nav-item">
+                        <div class="input-group">
+                            <input type="search" name="search_bar" class="form-control rounded" placeholder="Search" aria-label="Search"
+                              aria-describedby="search-addon" />
+                            <button name="mcq_search_bar_form" style="background-color: #ffc107;" type="submit" class="btn">search</button>
+                          </div>
+                    </div>
+                    </form>
+                </div>
+            </div>-->
+        </div>
+    </nav>
+    <!--Main Part-->
+    <section class="hero-bg">
+        <div class="container pt-3">
+        <div class="card">
+            <div class="card-header text-center">
+             <h3 style="color: #ffc107;"><strong>Summary Generator</strong> </h3> 
+            </div>
+            <form class=" justify-content-center" method="POST" action="" >
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h5 class="card-title  mb-3 text-center"  style="color: #ffc107;">Submit Content</h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="slidecontainer" >
+                            <input name="compression_ratio" type="range" min="30" max="100" value="80" class="slider" id="myRange">
+                            <pre>Value: <span id="demo"></span></pre>
+                          </div>
+                
+                    </div>
+                </div>
+                    {% csrf_token%}
+                    <div  class="form-group row" ></div>
+               <div class="col-lg-12 text-center">
+                {% if result %}
+                    <textarea   name="full_text" class="form-control z-depth-1 shadow-lg p-3 mb-5 bg-white rounded" id="exampleFormControlTextarea6" rows="20" cols="150" placeholder="Write something here...">{{result}}</textarea>
+                {% elif summary%}
+                    <textarea id="text"  name="full_text" class="form-control z-depth-1 shadow-lg p-3 mb-5 bg-white rounded" id="exampleFormControlTextarea6" rows="20" cols="150" placeholder="Write something here...">{{summary}}</textarea>    
+                {% else %}
+                    <textarea   name="full_text" class="form-control z-depth-1 shadow-lg p-3 mb-5 bg-white rounded" id="exampleFormControlTextarea6" rows="20" cols="150" placeholder="Write something here..."></textarea>
+                {% endif %}
+              </div></div>
+              <div class="text-center">
+                  {% if summary %}
+                  <button type="button" value="download" id="btn" class="btn btn-primary mb-2"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+                  {% else %}
+                <button name="mcq_content_form" type="submit" class="btn" style="background-color: #ffc107;">Submit</button>
+                  {% endif %}
+              </div>
+            </div></div>
+        </form>
+          </div></div>
+   <!--- <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-11 col-lg-10 col-xl-9">
+                <div class="card card0 border-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card card00 m-2 border-0">
+                                <div class="row text-center justify-content-center px-3">
+                                    <p class="prev text-danger"><span class="fa fa-long-arrow-left"> Go Back</span></p id="back">
+                                    <h3 class="mt-4">Simple MCQ's Generater</h3>
+                                </div>
+                                <div class="d-flex flex-md-row px-3 mt-4 flex-column-reverse">
+                                   <!--- <div class="col-md-4">
+                                        <div class="card1">
+                                            <ul id="progressbar" class="text-center">
+                                                <li class="active step0"></li>
+                                                <li class="step0"></li>
+                                                <li class="step0"></li>
+                                                <li class="step0"></li>
+                                            </ul>
+                                          <h6 class="mb-5">Submit Content</h6>
+                                            <h6 class="mb-5">Get Questions</h6>
+                                            <h6 class="mb-5">Download | Share</h6>
+                                            <h4 class="mb-5 text-muted " style="margin-top: 90px;">Success</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card2 first-screen show ml-2">
+                                            <div class="row text-center ">
+                                                <div class="mb-2 text-center"> <h4>Submit Content</h4> </div>
+                                                
+                                            </div>
+                                            <div class="row px-3 mt-4 text-center">
+                                                <form method="POST" action="">
+                                                <div class="form-group ">  <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" cols="900"></textarea> </div>
+                                                <div class="row px-3 mt-1 mb-5">
+                                                    <div class="custom-control ">  <label  class=" text-muted ">* Words should be less than 3000</label> </div>
+                                                    
+                                                </div>
+                                                <button type="submit"  class="next-button text-center  btn btn-danger mt-1 ml-2" >Submit</button> </div>
+                                            </form>
+                                            </div>
+                                          
+                                        </div>
+                                        {% if context %}
+                                        <div class="card2 ml-2">
+                                            <div class="row px-3 mt-3">
+                                              <div class="form-group mt-1 mb-1"> <input type="password" id="pwd" class="form-control" required> <label class="ml-3 form-control-placeholder" for="pwd">Password</label> </div>
+                                                <div class="next-button text-center mt-1 ml-2"> <span class="fa fa-arrow-right"></span> </div>
+                                            </div>
+                                            {% endif %}
+                                            <!--<div class="row mt-3 mb-5">
+                                                <div class="col-12">
+                                                    <p class="mb-1">Password must contain</p>
+                                                    <div class="row">
+                                                        <div class="col-6"><span class="fa fa-circle text-danger"></span> lower case</div>
+                                                        <div class="col-6"><span class="fa fa-circle text-danger"></span> numbers</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6"><span class="fa fa-circle text-danger"></span> upper case</div>
+                                                        <div class="col-6"><span class="fa fa-circle text-danger"></span> 8-16 characters</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card2 ml-2">
+                                            <div class="row px-3 mt-3">
+                                                <p class="mb-0">Download </p>
+                                                <div class="form-group mt-3 mb-4">
+                                                    
+                                                </div>
+                                                <div class="next-button text-center mt-3 ml-2"> <span class="fa fa-arrow-right"></span> </div>
+                                            </div>
+                                        </div>
+                                        <div class="card2 ml-2">
+                                            <div class="row px-3 mt-2 mb-4 text-center">
+                                                <h2 class="col-12 text-danger"><strong>Success !</strong></h2>
+                                                <div class="col-12 text-center"><img class="tick" src="https://i.imgur.com/WDI0da4.gif"></div>
+                                                <h6 class="col-12 mt-2"><i>...Enjoy COOKIES...</i></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                               <!--- <div class="row px-3">
+                                    <h2 class="text-muted get-bonus mt-4 mb-5">Download<span class="text-danger">|</span>Share</h2> <img class="pic ml-auto mr-3" src="https://i.imgur.com/NFodZjZ.png">
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</section>
+<!--
+<form method="POST" >
+    {% if summary %}
+    {% csrf_token %}
+
+<section >
+    <div class="container pt-3">
+    <div class="card">
+        <div class="card-header text-center">
+         <h3 style="color: #ffc107;"><strong> Summary</strong> </h3> 
+        </div>
+        <div class="card-body">
+          <h5 class="card-title  mb-3"  style="color: #ffc107;">Summarized Text</h5>
+          <pre>{{summary}}</pre>
+          <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+        </div></div>
+    
+      </div></div>
+    {% endif %}
+    </form>
+   
+</section>
+ -->
+
+   <!-- SCRIPTS -->
+   
+   <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'blog/js/aos.js' %}"></script>
+   <script src="{% static 'blog/js/owl.carousel.min.js' %}"></script>
+   <script src="{% static 'blog/js/custom.js' %}"></script>
+   <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+   <script src="{% static 'blog/js/smoothscroll.js' %}"></script>
+   
+   <script> 
+    function download(file, text) { 
+      
+        //creating an invisible element 
+        var element = document.createElement('a'); 
+        element.setAttribute('href',  
+        'data:text/plain;charset=utf-8, ' 
+        + encodeURIComponent(text)); 
+        element.setAttribute('download', file); 
+      
+        // Above code is equivalent to 
+        // <a href="path of file" download="file name"> 
+      
+        document.body.appendChild(element); 
+      
+        //onClick property 
+        element.click(); 
+      
+        document.body.removeChild(element); 
+    } 
+      
+    // Start file download. 
+    document.getElementById("btn") 
+    .addEventListener("click", function() { 
+        // Generate download of hello.txt  
+        // file with some content 
+        var text = document.getElementById("text").value; 
+        var filename = "summary.txt"; 
+      
+        download(filename, text); 
+    }, false); 
+ </script>
+
+
+<script>
+    
+    $(document).ready(function(){
+
+var current_fs, next_fs, previous_fs;
+
+// No BACK button on first screen
+if($(".show").hasClass("first-screen")) {
+$(".prev").css({ 'display' : 'none' });
+}
+
+// Next button
+$(".next-button").click(function(){
+
+current_fs = $(this).parent().parent();
+next_fs = $(this).parent().parent().next();
+
+$(".prev").css({ 'display' : 'block' });
+
+$(current_fs).removeClass("show");
+$(next_fs).addClass("show");
+
+$("#progressbar li").eq($(".card2").index(next_fs)).addClass("active");
+
+current_fs.animate({}, {
+step: function() {
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+
+next_fs.css({
+'display': 'block'
+});
+}
+});
+});
+
+// Previous button
+
+
+$(".prev").click(function(){
+
+current_fs = $(".show");
+previous_fs = $(".show").prev();
+
+$(current_fs).removeClass("show");
+$(previous_fs).addClass("show");
+
+$(".prev").css({ 'display' : 'block' });
+
+if($(".show").hasClass("first-screen")) {
+$(".prev").css({ 'display' : 'none' });
+}
+
+$("#progressbar li").eq($(".card2").index(current_fs)).removeClass("active");
+
+current_fs.animate({}, {
+step: function() {
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+
+previous_fs.css({
+'display': 'block'
+});
+}
+});
+});
+
+});
+</script>
+<script>
+    //Slider
+    var slider = (document.getElementById("myRange"));
+var output = document.getElementById("demo");
+
+output.innerHTML = slider.value/100;
+
+slider.oninput = function() {
+  output.innerHTML = this.value/100;
+}
+</script>
+</body>
+</html>

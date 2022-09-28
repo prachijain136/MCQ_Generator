@@ -1,0 +1,379 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>EZ-Quest MCQ's Generater</title>
+<!--
+
+DIGITAL TREND
+
+https://templatemo.com/tm-538-digital-trend
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/aos.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/owl.carousel.min.css' %}">
+     <link rel="stylesheet" href="{% static 'blog/css/owl.theme.default.min.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'blog/css/templatemo-digital-trend.css' %}">
+</head>
+<body>
+
+     <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'mcq-index'%}">
+             
+              <i class="fa fa-cogs fa-2x" ></i>
+            <b>EZ-Quest</b>  
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#project" class="nav-link contact">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login'%}" class="nav-link contact">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'blog-home'%}" class="nav-link contact">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#footer" class="nav-link contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+     <!-- HERO -->
+     <section class="hero hero-bg d-flex justify-content-center align-items-center">
+               <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
+                              <div class="hero-text">
+
+                                   <h1 class="text-white" data-aos="fade-up">Use the Power of AI
+                                        to Create Questions </h1>
+
+                                   <a href="{% url 'mcq-gen'%}" class="custom-btn btn-bg btn mt-3" data-aos="fade-up" data-aos-delay="100">Lets get started!</a>
+
+                                <!---  <strong class="d-block py-3 pl-5 text-white" data-aos="fade-up" data-aos-delay="200"> Let's Crack it !!!</strong>-->
+                              </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <div class="hero-image" data-aos="fade-up" data-aos-delay="300">
+
+                            <img src="{% static 'blog/images/working-girl.png' %}" class="img-fluid" alt="working girl">
+                          </div>
+                        </div>
+
+                    </div>
+               </div>
+     </section>
+
+
+     <!-- ABOUT -->
+     <section class="about section-padding pb-0" id="about">
+          <div class="container">
+               <div class="row">
+                  
+
+                    <div class="col-lg-7 mx-auto col-md-10 col-12">
+                         <div class="about-info">
+                              <h1 data-aos="fade-up"><b> <i class="fa fa-cogs" ></i> EZ-Quest</b> </h1>
+                              <h2 class="mb-4" data-aos="fade-up"><strong> AI-powered MCQ's generator </strong></h2>
+
+                              <p class="mb-0" data-aos="fade-up"> <strong>EZ-Quest</strong> Test creates questions automatically from content within seconds. Powered by AI and ML algorithms, <strong>EZ-Quest</strong> Test builds a question bank that you can curate and use for assessments, and quizzes and editable notes to reinforce key concepts to ensure knowledge retention. Save time by generating questions with <strong>EZ-Quest</strong>.</p>
+                         </div>
+
+                         <div class="about-image" data-aos="fade-up" data-aos-delay="200">
+
+                          <img src="{% static 'blog/images/undraw_online_test_gba7.png' %}" class="img-fluid" alt="office">
+                        </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- PROJECT -->
+     <section class="project section-padding" id="project">
+          <div class="container-fluid">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">
+
+                        <h2 class="mb-5 text-center" data-aos="fade-up">
+                            Please take a look through our
+                            <strong>EZ-Quest</strong>
+                        </h2>
+
+                         <div class="owl-carousel owl-theme" id="project-slide">
+                              <div class="item project-wrapper" data-aos="fade-up" data-aos-delay="100">
+                                   <img src="{% static 'blog/images/vocab.jpg'  %}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Ez-Quest</small>
+
+                                        <h3>
+                                             <a href="{% url 'vocab-gen' %}">
+                                                  <span>Develop Vocabulary</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                              <!-- TURU FALLS
+                                   <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'blog/images/true.jpg'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Ez-Quest</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Generate True/Flase</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+                              -->
+
+                              <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'blog/images/do-this-not-that-when-writing-multiple-choice-questions.jpg' %}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Ez-Quest</small>
+
+                                        <h3>
+                                             <a href="{% url 'mcq-gen'%}">
+                                                  <span>Generate Mcqs</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                             <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'blog/images/summary.png'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Ez-Quest</small>
+
+                                        <h3>
+                                             <a href="{% url 'summary-gen'%}">
+                                                  <span>Generate Summary</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                             <!---  <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="images/project/project-image05.jpg" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Video</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Ultimate HealthCare</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>-->
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TESTIMONIAL -->
+  <!---   <section class="testimonial section-padding">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-6 col-md-5 col-12">
+                        <div class="contact-image" data-aos="fade-up">
+
+                          <img src="images/female-avatar.png" class="img-fluid" alt="website">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-7 col-12">
+                      <h4 class="my-5 pt-3" data-aos="fade-up" data-aos-delay="100">Client Testimonials</h4>
+
+                      <div class="quote" data-aos="fade-up" data-aos-delay="200"></div>
+
+                      <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+
+                      <p data-aos="fade-up" data-aos-delay="400">
+                        <strong>Mary Zoe</strong>
+
+                        <span class="mx-1">/</span>
+
+                        <small>Digital Agency (CEO)</small>
+                      </p>
+                    </div>
+
+               </div>
+          </div>
+     </section>-->
+
+
+     <section class="project section-padding" id="project">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">
+
+                        <h2 class="mb-5 text-center" data-aos="fade-up">
+                           
+                            <strong>Steps to use EZ-Quest</strong>
+                        </h2>
+
+                       
+                    </div>
+                  
+               </div>
+               <div class="row">
+                    <div class="col-sm-4" data-aos="fade-up" data-aos-delay="100">
+                      <div class="card rounded-pill">
+                        <div class="card-body rounded-pill" style="background-color: #ffc107;">
+                          <h5 class="card-title text-center" data-aos="fade-up"><i class="fa fa-clipboard fa-4x" aria-hidden="true"></i></h5>
+                          <p class="card-text text-center" >
+                          <b> <strong style="color: #2F2E52;"> Step 1 <br>Submit Content <br> Copy content or upload word doc into EZ-Quest.</strong> </b> 
+                          </p>
+                         
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4" data-aos="fade-up" data-aos-delay="100">
+                         <div class="card rounded-pill" >
+                           <div class="card-body rounded-pill" style="background-color: #ffc107;">
+                             <h5 class="card-title text-center" data-aos="fade-up"><i class="fa fa-keyboard-o fa-4x" aria-hidden="true"></i></h5>
+                             <p class="card-text text-center">
+                              <b> <strong style="color: #2F2E52;"> Step 2 <br>Choose Keywords <br> Tell  keywords required for MCQ creation.</strong> </b> 
+                             </p>
+                            
+                           </div>
+                         </div>
+                       </div>
+                       <div class="col-sm-4" data-aos="fade-up" data-aos-delay="100">
+                         <div class="card rounded-pill">
+                           <div class="card-body rounded-pill" style="background-color: #ffc107;">
+                             <h5 class="card-title text-center" data-aos="fade-up"><i class="fa fa-question-circle-o fa-4x" aria-hidden="true"></i></h5>
+                             <p class="card-text text-center" data-aos="fade-up">
+                              <b> <strong style="color: #2F2E52;"> Step 3 <br>Get Questions <br> Get questions within seconds, and tweak them as you wish.</strong> </b> 
+                             </p>
+                            
+                           </div>
+                         </div>
+                       </div>
+                  </div>
+          </div>
+     </section>
+
+    <footer class="site-footer" id="footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5 mx-lg-auto col-md-8 col-10">
+            <h1 class="text-white" data-aos="fade-up" data-aos-delay="100"> <a class="navbar-brand" href="{% url 'mcq-index'%}">
+             
+               <i class="fa fa-cogs fa-2x" ></i>
+             <b>EZ-Quest</b>  
+             </a></h1>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+            <h4 class="my-4">Features</h4>
+
+            <p class="mb-1">
+                 <a href="tel:8600589418">
+              <i class="fa fa-phone mr-2 footer-icon"></i> 
+          +91-8600589418</a>
+             </p>
+
+            <p>
+              <a href="mailto:chetanmakwana285@gmail.com">
+                <i class="fa fa-envelope mr-2 footer-icon"></i>
+               EZ-Quest@gmail.com
+              </a>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
+            <h4 class="my-4">Our Studio</h4>
+
+            <p class="mb-1">
+              <i class="fa fa-home mr-2 footer-icon"></i> 
+              B.k No.684, Room no.9,Near Balkan Ji Bari school Ulhasnagar 421003
+            </p>
+          </div>
+
+        <!---  <div class="col-lg-4 mx-lg-auto text-center col-md-8 col-12" data-aos="fade-up" data-aos-delay="400">
+            <p class="copyright-text">Copyright &copy; 2020 Your Company
+            <br>
+            <a rel="nofollow noopener" href="https://templatemo.com">Design: TemplateMo</a></p>
+          </div>-->
+
+          <div class="col-lg-4 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
+            
+            <ul class="footer-link">
+              <li><a href="#">Stories</a></li>
+              <li><a href="#">Work with us</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+            <ul class="social-icon">
+              <li><a href="#" class="fa fa-instagram"></a></li>
+              <li><a href="#" class="fa fa-twitter"></a></li>
+              <li><a href="#" class="fa fa-dribbble"></a></li>
+              <li><a href="#" class="fa fa-behance"></a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+   <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'blog/js/aos.js' %}"></script>
+   <script src="{% static 'blog/js/owl.carousel.min.js' %}"></script>
+   <script src="{% static 'blog/js/smoothscroll.js' %}"></script>
+   <script src="{% static 'blog/js/custom.js' %}"></script>
+
+</body>
+</html>
